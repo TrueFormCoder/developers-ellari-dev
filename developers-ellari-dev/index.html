@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>developers — Ellari Ventures Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #13131f;
+      --border:   #1e1e32;
+      --violet:   #7c3aed;
+      --violet-dim: #4c1d95;
+      --text:     #e2e8f0;
+      --meta:     #64748b;
+      --muted:    #334155;
+      --green:    #34d399;
+      --mono:     'IBM Plex Mono', monospace;
+    }
+
+    html { background: var(--bg); color: var(--text); font-family: var(--mono); font-size: 14px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    body { min-height: 100vh; }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    header {
+      padding: 48px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { display: flex; align-items: center; gap: 20px; }
+    .evd-mark { flex-shrink: 0; }
+    .evd-mark svg rect { transition: opacity 0.2s; }
+    .header-text {}
+    .header-org { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-bottom: 2px; }
+    .header-product { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+    .header-product span { color: var(--violet); }
+    .header-sub { font-size: 12px; color: var(--meta); margin-top: 4px; }
+
+    /* ── SECTION ── */
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 20px;
+    }
+    .section-eyebrow::before { content: '// '; color: var(--muted); }
+
+    h2 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 16px; letter-spacing: -0.01em; }
+    p { color: var(--meta); margin-bottom: 14px; font-size: 13.5px; }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 500; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--violet);
+      padding: 20px 24px;
+      border-radius: 2px;
+      margin: 24px 0;
+    }
+    .callout p { margin-bottom: 8px; font-size: 13px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* ── PRODUCT BLOCK ── */
+    .product-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .product-block:last-child { margin-bottom: 0; }
+    .product-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .product-desc { font-size: 13px; color: var(--meta); line-height: 1.7; }
+
+    /* ── POLICY LIST ── */
+    .policy-list { list-style: none; }
+    .policy-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--meta);
+    }
+    .policy-list li:last-child { border-bottom: none; }
+    .policy-list .check {
+      color: var(--green);
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* ── DATA USE TABLE ── */
+    .use-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 16px; }
+    .use-table th {
+      text-align: left;
+      font-weight: 500;
+      color: var(--meta);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .use-table td {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      color: var(--meta);
+      vertical-align: top;
+    }
+    .use-table td strong { color: var(--text); }
+    .use-table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 20px 24px;
+    }
+    .contact-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--meta); margin-bottom: 8px; }
+    .contact-value { font-size: 13px; color: var(--text); }
+    .contact-value a { color: var(--violet); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--meta); }
+
+    /* ── DIVIDER RULE ── */
+    .rule { color: var(--muted); font-size: 11px; letter-spacing: 0.05em; overflow: hidden; white-space: nowrap; margin: 0; line-height: 1; }
+
+    /* ── STATUS BADGE ── */
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--green); margin-top: 6px; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+    @media (max-width: 640px) {
+      header { padding: 32px 0 28px; }
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      section { padding: 36px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <div class="evd-mark">
+          <svg width="32" height="26" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0"  y="0"  width="13" height="44" rx="2" fill="#7c3aed"/>
+            <rect x="20" y="9"  width="13" height="35" rx="2" fill="#7c3aed" fill-opacity="0.45"/>
+            <rect x="41" y="0"  width="13" height="44" rx="2" fill="#7c3aed"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <div class="header-org">Ellari Ventures Development</div>
+          <div class="header-product"><span>developers</span>.ellari.dev</div>
+          <div class="header-sub">API compliance · data use policy · partner documentation</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section>
+      <div class="section-eyebrow">About EVD</div>
+      <h2>Operator tooling for institutional finance</h2>
+      <p>
+        Ellari Ventures Development (EVD) builds software infrastructure for small business operators
+        pursuing institutional financing — including SBA 7(a) loans, franchise acquisition financing,
+        and succession planning. Our tools are designed for operators, their guarantors, and the
+        lenders and advisors who serve them.
+      </p>
+      <p>
+        EVD products are built on Cloudflare's infrastructure (Pages, Workers, D1) and deployed
+        under <strong>Caretide Systems LLC</strong> and <strong>Sigwell LLC</strong> as operating entities.
+        All financial data integrations are implemented with read-only access, explicit user consent,
+        and strict data minimization principles.
+      </p>
+      <div class="status">
+        <div class="status-dot"></div>
+        Active · All systems operational
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section>
+      <div class="section-eyebrow">Products using financial data APIs</div>
+      <h2>Platform overview</h2>
+      <p>The following EVD products connect to financial data APIs to serve operators in loan preparation workflows.</p>
+
+      <div class="product-block">
+        <div class="product-name">FranchiseDash</div>
+        <div class="product-tag">SBA Loan Preparation · Plaid API</div>
+        <p class="product-desc">
+          FranchiseDash is an SBA loan preparation platform for franchise operators and their guarantors.
+          The platform helps operators assemble the full SBA 7(a) documentation package — including
+          Personal Financial Statements (SBA Form 413), construction bid analysis, risk registers, and
+          lender communication logs — through a structured, role-based workflow.
+        </p>
+        <p class="product-desc" style="margin-top: 10px;">
+          <strong>Plaid integration:</strong> Guarantors may optionally connect bank, brokerage, and
+          retirement accounts via Plaid Link to import live account balances directly into their
+          Form 413 asset schedule. This replaces manual balance entry with institution-verified data,
+          improving accuracy and reducing document turnaround time for lenders. Connection is
+          per-session, user-initiated, and fully revocable.
+        </p>
+      </div>
+    </section>
+
+    <!-- DATA USE -->
+    <section>
+      <div class="section-eyebrow">Plaid integration</div>
+      <h2>How we use financial data</h2>
+
+      <div class="callout">
+        <p>
+          <strong>Summary:</strong> We use Plaid to allow guarantors to securely import their own
+          bank, brokerage, and retirement account balances into their Personal Financial Statement
+          for SBA loan preparation. Data is read-only, session-scoped, and never shared with or
+          sold to third parties.
+        </p>
+      </div>
+
+      <table class="use-table">
+        <thead>
+          <tr>
+            <th>Data type</th>
+            <th>Purpose</th>
+            <th>Retained</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Account balances</strong><br>Checking, savings, money market</td>
+            <td>Populate SBA Form 413 cash asset schedule</td>
+            <td>In D1 database, associated with guarantor ID. User may delete.</td>
+          </tr>
+          <tr>
+            <td><strong>Account balances</strong><br>Brokerage, investment</td>
+            <td>Populate Form 413 investment asset schedule</td>
+            <td>Same as above</td>
+          </tr>
+          <tr>
+            <td><strong>Account balances</strong><br>Retirement (IRA, 401k)</td>
+            <td>Populate Form 413 retirement asset schedule</td>
+            <td>Same as above</td>
+          </tr>
+          <tr>
+            <td><strong>Institution name</strong></td>
+            <td>Label asset rows in the PFS output</td>
+            <td>Same as above</td>
+          </tr>
+          <tr>
+            <td><strong>Account type / mask</strong></td>
+            <td>Categorize and identify accounts</td>
+            <td>Same as above</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top: 20px; font-size: 12px;">
+        We do not access transaction history, income data, or identity verification fields.
+        We do not use Plaid data for credit decisioning, marketing, or any purpose outside the
+        active SBA loan preparation workflow.
+      </p>
+    </section>
+
+    <!-- POLICY -->
+    <section>
+      <div class="section-eyebrow">Data policy</div>
+      <h2>Commitments</h2>
+      <ul class="policy-list">
+        <li>
+          <span class="check">✓</span>
+          <span><strong>Read-only access.</strong> We request balance data only. We do not initiate transactions, move funds, or write to any financial account.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>Explicit user consent.</strong> Each guarantor initiates their own Plaid Link connection. No connections are made without active user action.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>No third-party sharing.</strong> Financial data is never sold, shared with marketing platforms, or disclosed to any party other than the lender as part of the SBA package the user is actively assembling.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>No cross-product use.</strong> Data imported via Plaid in FranchiseDash is scoped to that deal workflow. It is not used by other EVD products.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>User-controlled deletion.</strong> Guarantors may disconnect their institution and delete their imported data at any time from the PFS Assets interface.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>Encrypted at rest.</strong> All data is stored in Cloudflare D1 with encryption at rest. Access is controlled via Cloudflare Zero Trust (CF Access) with per-role authentication.</span>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <span><strong>Sandbox environment.</strong> All development and testing uses Plaid's sandbox environment with synthetic data. No real financial credentials are used outside production.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <div class="section-eyebrow">Contact</div>
+      <h2>Compliance and partnership inquiries</h2>
+      <p>For API compliance review, due diligence requests, or partnership inquiries, contact us directly.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-label">Compliance</div>
+          <div class="contact-value">
+            <a href="mailto:workspace.ops@proton.me">workspace.ops@proton.me</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Operating entity</div>
+          <div class="contact-value">Ellari Ventures Development<br>Caretide Systems LLC</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Infrastructure</div>
+          <div class="contact-value">Cloudflare Pages · Workers · D1<br>Account ID: 4b13e21f</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Platform</div>
+          <div class="contact-value">
+            <a href="https://ellari.dev">ellari.dev</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-copy">
+          © 2026 Ellari Ventures Development · Caretide Systems LLC · All rights reserved
+        </div>
+        <div class="footer-links">
+          <a href="https://ellari.dev">ellari.dev</a>
+          <a href="mailto:workspace.ops@proton.me">contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
