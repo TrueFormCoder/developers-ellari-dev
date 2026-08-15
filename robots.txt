@@ -1,0 +1,6 @@
+# developers.ellari.dev
+User-agent: Googlebot
+Disallow: /
+
+User-agent: *
+Allow: /
