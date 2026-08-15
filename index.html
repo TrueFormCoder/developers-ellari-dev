@@ -12,15 +12,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0a0a0f;
-      --surface:  #13131f;
-      --border:   #1e1e32;
+      --bg:       #F5F7FA;
+      --surface:  #FFFFFF;
+      --border:   rgba(0,0,0,.08);
       --violet:   #7c3aed;
-      --violet-dim: #4c1d95;
-      --text:     #e2e8f0;
-      --meta:     #64748b;
-      --muted:    #334155;
-      --green:    #34d399;
+      --trust-blue: #3E83AC;
+      --trust-dim: #245F87;
+      --trust-light: rgba(62,131,172,.1);
+      --trust-border: rgba(62,131,172,.2);
+      --violet-dim: #194766;
+      --text:     #172033;
+      --meta:     #526071;
+      --muted:    #526071;
+      --green:    #147A52;
       --mono:     'IBM Plex Mono', monospace;
     }
 
@@ -41,7 +45,7 @@
     .header-text {}
     .header-org { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-bottom: 2px; }
     .header-product { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
-    .header-product span { color: var(--violet); }
+    .header-product span { color: var(--trust-blue); }
     .header-sub { font-size: 12px; color: var(--meta); margin-top: 4px; }
 
     /* ── SECTION ── */
@@ -52,7 +56,7 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--violet);
+      color: var(--trust-blue);
       margin-bottom: 20px;
     }
     .section-eyebrow::before { content: '// '; color: var(--muted); }
@@ -66,7 +70,7 @@
     .callout {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--violet);
+      border-left: 3px solid var(--trust-blue);
       padding: 20px 24px;
       border-radius: 2px;
       margin: 24px 0;
@@ -90,7 +94,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--violet);
+      color: var(--trust-blue);
       background: rgba(124, 58, 237, 0.1);
       border: 1px solid rgba(124, 58, 237, 0.2);
       padding: 2px 8px;
@@ -151,7 +155,7 @@
     }
     .contact-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--meta); margin-bottom: 8px; }
     .contact-value { font-size: 13px; color: var(--text); }
-    .contact-value a { color: var(--violet); text-decoration: none; }
+    .contact-value a { color: var(--trust-blue); text-decoration: none; }
     .contact-value a:hover { text-decoration: underline; }
 
     /* ── FOOTER ── */
@@ -351,7 +355,7 @@
         <div class="contact-card">
           <div class="contact-label">Compliance</div>
           <div class="contact-value">
-            <a href="mailto:workspace.ops@proton.me">workspace.ops@proton.me</a>
+            <a href="mailto:security@ellari.dev">security@ellari.dev</a>
           </div>
         </div>
         <div class="contact-card">
@@ -379,7 +383,7 @@
         </div>
         <div class="footer-links">
           <a href="https://ellari.dev">ellari.dev</a>
-          <a href="mailto:workspace.ops@proton.me">contact</a>
+          <a href="mailto:security@ellari.dev">contact</a>
         </div>
       </div>
     </footer>
